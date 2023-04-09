@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "dangKi";
+}
+
+<div class="nen">
+    <div class="center">
+        <div class="row">
+            <div class="col-12">
+                <div class="header">
+                    <a href="dangnhap.html">Đăng ký</a>
+                    <a href="index.html"
+                    ><img src="home.png" alt="" style="margin-left: 60%"
+                     /></a>
+                </div>
+            </div>
+        </div>
+        <form>
+            <input
+                id="pswrd"
+                type=""
+                placeholder="Số điện thoại..."
+                ng-model="sdt"
+                style="margin-top: 20px"
+            />
+            <i class="fas fa-lock"></i>
+            <input
+                id="pswrd"
+                type=""
+                placeholder="Họ và tên..."
+                ng-model="hoTen"
+                style="margin-top: 20px"
+            />
+            <i class="fas fa-lock"></i>
+            <input
+                id="pswrd"
+                type="password"
+                placeholder="Mật khẩu..."
+                ng-model="matKhau"
+            />
+            <i class="fas fa-lock"></i>
+            <input id="pswrd" type="password" placeholder="Nhập lại mật khẩu..." />
+            <i class="fas fa-lock"></i>
+            <input type="submit" value="Đăng ký" ng-click="dangKy()" />
+            <a href="#dangnhap">Đã có tài khoản</a>
+        </form>
+    </div>
+</div>
+
+

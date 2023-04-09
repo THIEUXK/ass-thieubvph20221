@@ -1,0 +1,80 @@
+﻿@model ass_thieubvph20221.Models.giay
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Chi tiết sản phẩm</h1>
+
+<div>
+    <h4>giay</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tenGiay)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tenGiay)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.chatLieu)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.chatLieu)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.soLuong)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.soLuong)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.donGiaNhap)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.donGiaNhap)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.donGiaban)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.donGiaban)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.anh)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (System.IO.Path.GetExtension(Model.anh) == ".jpg" ||
+                 System.IO.Path.GetExtension(Model.anh) == ".png" ||
+                 System.IO.Path.GetExtension(Model.anh) == ".jpeg" ||
+                 System.IO.Path.GetExtension(Model.anh) == ".tiff" ||
+                 System.IO.Path.GetExtension(Model.anh) == ".gif")
+            {
+                <img src="~/image/@Model.anh" height="100">
+            }
+            else
+            {
+                <span>Ảnh lỗi rồi =)))</span>                       
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ghiChu)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ghiChu)
+        </dd>
+    </dl>
+    <td>
+        <button type="button" class="primary-btn"> @Html.ActionLink("Edit", "updateGiay", new { id = Model.id }) </button>
+        <button type="button" class="primary-btn"> @Html.ActionLink("add", "AddToCart", new { id = Model.id })</button>
+    </td>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

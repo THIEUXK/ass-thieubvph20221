@@ -1,0 +1,89 @@
+﻿@model IEnumerable<ass_thieubvph20221.Models.giay>
+
+@{
+    ViewData["Title"] = "ShowCart";
+}
+
+<h1>Giỏ hàng</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tenGiay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.chatLieu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soLuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.donGiaNhap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.donGiaban)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.anh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ghiChu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenGiay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.chatLieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.donGiaNhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.donGiaban)
+            </td>
+            <td>
+                
+                @if (System.IO.Path.GetExtension(item.anh) == ".jpg" ||
+                     System.IO.Path.GetExtension(item.anh) == ".png" ||
+                     System.IO.Path.GetExtension(item.anh) == ".jpeg" ||
+                     System.IO.Path.GetExtension(item.anh) == ".tiff" ||
+                     System.IO.Path.GetExtension(item.anh) == ".gif")
+                {
+                    <img src="~/image/@item.anh" height="100">
+                }
+                else
+                {
+                    <span>Ảnh lỗi rồi =)))</span>                       
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ghiChu)
+            </td>
+            <td>
+                <button type="button" class="btn btn-info">@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) | </button>
+                    <button type="button" class="btn btn-info">  @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |</button>
+                        <button type="button" class="btn btn-info">  @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "login";
+}
+
+<div class="nen">
+    <div class="center">
+        <div class="row">
+            <div class="col-12">
+                <div class="header">
+                    <a href="#home">Login</a>
+                    <a href="index.html"
+                    ><img src="#" alt="" / style="margin-left: 60%;"></a
+                    >
+                </div>
+            </div>
+        </div>
+        <form>
+            <input type="text" placeholder="Email or Username" />
+            <i class="far fa-envelope"></i>
+            <input id="pswrd" type="password" placeholder="Password" />
+            <i class="fas fa-lock" onclick="show()"></i>
+            <a href="index.html"
+            ><input type="submit" href="index.html" value="Sign in"
+             /></a>
+            <a href="#dangKy"><a asp-controller="login" asp-action="dangKi">dang ki</a></a>
+        </form>
+    </div>
+</div>
+
+

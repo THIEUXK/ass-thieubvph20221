@@ -1,0 +1,211 @@
+﻿@model IEnumerable<ass_thieubvph20221.Models.giay>
+@{
+    ViewData["Title"] = "shop";
+}
+
+<!-- breadcrumb Start-->
+<div class="page-notification">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- listing Area Start -->
+<div class="category-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 col-lg-8 col-md-10">
+                <div class="section-tittle mb-50">
+                    <h2>sản phẩm SHOP</h2>
+                </div>
+            </div>
+
+            <a class="btn btn-primary"  asp-controller="giay" asp-action="giay">Sản Phẩm</a>
+            
+        </div>
+        
+        <br></br>
+        <!--?  Right content -->
+            <div class="col-xl-12 col-lg-12 col-md-12" style="text-align: center">
+                <!--? New Arrival Start -->
+                <div class="new-arrival new-arrival2">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+
+                        
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-new-arrival mb-50 text-center">
+                                    <div class="popular-img">
+                                        @if (System.IO.Path.GetExtension(item.anh) == ".jpg" ||
+                                             System.IO.Path.GetExtension(item.anh) == ".png" ||
+                                             System.IO.Path.GetExtension(item.anh) == ".jpeg" ||
+                                             System.IO.Path.GetExtension(item.anh) == ".tiff" ||
+                                             System.IO.Path.GetExtension(item.anh) == ".gif")
+                                        {
+                                            <img src="~/image/@item.anh" >
+                                        }
+                                        else
+                                        {
+                                            <span>Ảnh lỗi rồi =)))</span>                       
+                                        }
+                                        <div class="favorit-items">
+                                            <!-- <span class="flaticon-heart"></span> -->
+                                            <img src="~/assets/img/gallery/favorit-card.png"
+                                                 alt=""
+                                                 ng-click="addShopingCart(s.id, s.img, s.ten ,s.gia)"/>
+                                        
+                                        </div>
+                                    </div>
+                                    <div class="popular-caption">
+                                        <h3>
+                                            <a href="#product_details/{{s.id}}" > @Html.DisplayFor(modelItem => item.tenGiay)</a>
+                                        <a>@Html.ActionLink("<XemSP>", "chiTietSP", new { id = item.id})</a>
+
+                                    </h3>
+                                        <div class="rating mb-10">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span>@Html.DisplayFor(modelItem => item.donGiaban)$</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <!-- Button -->
+                    <div class="row justify-content-center">
+                        <div class="room-btn mt-20">
+                            <a href="#catagori" class="border-btn">Browse More</a>
+                        </div>
+                    </div>
+                </div>
+                <!--? New Arrival End -->
+            </div>
+        </div>
+    </div>
+
+<!-- listing-area Area End -->
+<!--? Popular Items Start -->
+<div class="popular-items">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-popular-items mb-50 text-center">
+                    <div class="popular-img">
+                        <img src="../assets/img/gallery/popular1.png" alt="" />
+                        <div class="img-cap">
+                            <span>Glasses</span>
+                        </div>
+                        <div class="favorit-items">
+                            <a href="#shop" class="btn">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-popular-items mb-50 text-center">
+                    <div class="popular-img">
+                        <img src="../assets/img/gallery/popular2.png" alt="" />
+                        <div class="img-cap">
+                            <span>Watches</span>
+                        </div>
+                        <div class="favorit-items">
+                            <a href="#shop" class="btn">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-popular-items mb-50 text-center">
+                    <div class="popular-img">
+                        <img src="../assets/img/gallery/popular3.png" alt="" />
+                        <div class="img-cap">
+                            <span>Jackets</span>
+                        </div>
+                        <div class="favorit-items">
+                            <a href="#shop" class="btn">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-popular-items mb-50 text-center">
+                    <div class="popular-img">
+                        <img src="../assets/img/gallery/popular4.png" alt="" />
+                        <div class="img-cap">
+                            <span>Clothes</span>
+                        </div>
+                        <div class="favorit-items">
+                            <a href="#shop" class="btn">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Popular Items End -->
+<!--? Services Area Start -->
+<div class="categories-area section-padding40 gray-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-cat mb-50">
+                    <div class="cat-icon">
+                        <img src="../assets/img/icon/services1.svg" alt="" />
+                    </div>
+                    <div class="cat-cap">
+                        <h5>Fast & Free Delivery</h5>
+                        <p>Free delivery on all orders</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-cat mb-50">
+                    <div class="cat-icon">
+                        <img src="../assets/img/icon/services2.svg" alt="" />
+                    </div>
+                    <div class="cat-cap">
+                        <h5>Fast & Free Delivery</h5>
+                        <p>Free delivery on all orders</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-cat mb-30">
+                    <div class="cat-icon">
+                        <img src="../assets/img/icon/services3.svg" alt="" />
+                    </div>
+                    <div class="cat-cap">
+                        <h5>Fast & Free Delivery</h5>
+                        <p>Free delivery on all orders</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-cat">
+                    <div class="cat-icon">
+                        <img src="../assets/img/icon/services4.svg" alt="" />
+                    </div>
+                    <div class="cat-cap">
+                        <h5>Fast & Free Delivery</h5>
+                        <p>Free delivery on all orders</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--? Services Area End -->

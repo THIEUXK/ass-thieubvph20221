@@ -15,7 +15,7 @@ namespace ass_thieubvph20221.Migrations
                 {
                     id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     tenGiay = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    idChatLieu = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    chatLieu = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     soLuong = table.Column<int>(type: "int", nullable: false),
                     donGiaNhap = table.Column<int>(type: "int", nullable: false),
                     donGiaban = table.Column<int>(type: "int", nullable: false),

@@ -1,0 +1,45 @@
+﻿@model ass_thieubvph20221.Models.khachHang
+
+@{
+    ViewData["Title"] = "AddQLKhanhHang";
+}
+
+<h1>AddQLKhanhHang</h1>
+
+<h4>khachHang</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddQLKhanhHang">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tenKH" class="control-label"></label>
+                <input asp-for="tenKH" class="form-control" />
+                <span asp-validation-for="tenKH" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="diaChi" class="control-label"></label>
+                <input asp-for="diaChi" class="form-control" />
+                <span asp-validation-for="diaChi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sDT" class="control-label"></label>
+                <input asp-for="sDT" class="form-control" />
+                <span asp-validation-for="sDT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

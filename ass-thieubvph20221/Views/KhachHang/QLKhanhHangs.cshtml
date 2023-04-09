@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ass_thieubvph20221.Models.khachHang>
+
+@{
+    ViewData["Title"] = "QLKhanhHangs";
+}
+
+<h1>QLKhanhHangs</h1>
+
+<p>
+    <button type="button" class="btn btn-info"><a asp-action="AddQLKhanhHang">Them nhan vien</a></button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tenKH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.diaChi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sDT)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.diaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sDT)
+            </td>
+                <td>
+                    <button type="button" class="primary-btn" >@Html.ActionLink("Edit", "UpdateKH", new { id = item.id }) </button>
+
+                    <button type="button" class="primary-btn" >@Html.ActionLink("Details", "DetailsKH", new { id = item.id })</button>
+
+                    <button type="button" class="primary-btn">@Html.ActionLink("Delete", "DeleteKH", new { id = item.id })</button>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -36,7 +36,7 @@ namespace ass_thieubvph20221.Services
             return lst;
         }
 
-        List<hoaDon> IHoaDonService.GetAllhoaDons()
+        public List<hoaDon> GetAllhoaDons()
         {
             return context.HoaDons.ToList();
         }
@@ -84,7 +84,7 @@ namespace ass_thieubvph20221.Services
             }
         }
 
-        public bool Delete(hoaDon id)
+        public bool Delete(Guid id)
         {
             try
             {

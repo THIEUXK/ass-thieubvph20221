@@ -60,7 +60,7 @@ namespace ass_thieubvph20221.Services
             }
         }
 
-        public bool Delete(nhanVien id)
+        public bool Delete(Guid id)
         {
             try
             {

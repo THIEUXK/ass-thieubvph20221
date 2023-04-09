@@ -12,8 +12,8 @@ using ass_thieubvph20221.Models;
 namespace ass_thieubvph20221.Migrations
 {
     [DbContext(typeof(giayDBcontext))]
-    [Migration("20230409075627_â")]
-    partial class â
+    [Migration("20230409115521_ass")]
+    partial class ass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

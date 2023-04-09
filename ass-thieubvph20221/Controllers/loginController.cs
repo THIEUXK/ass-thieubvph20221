@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ass_thieubvph20221.Models;
+using ass_thieubvph20221.Services;
+using ass_thieubvph20221.Services.iservices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ass_thieubvph20221.Controllers
 {
@@ -11,17 +14,31 @@ namespace ass_thieubvph20221.Controllers
         {
             _logger = logger;
         }
+
         public IActionResult login()
         {
             return View();
         }
+
         public IActionResult dangKi()
-        {
-            return View();
-        }
-        public IActionResult QLCuaHang()
         {
             return View();
         }
     }
 }
+      
+
+
+
+      
+      
+
+
+
+
+
+
+
+
+
+

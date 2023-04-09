@@ -13,6 +13,6 @@ namespace ass_thieubvph20221.Services.iservices
         // Phương thức Sửa
         public bool Update(nhanVien p);
         // Phương thức xóa
-        public bool Delete(nhanVien id);
+        public bool Delete(Guid id);
     }
 }

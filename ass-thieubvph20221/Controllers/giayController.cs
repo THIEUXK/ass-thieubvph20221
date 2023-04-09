@@ -22,7 +22,7 @@ namespace ass_thieubvph20221.Controllers
         }
         public IActionResult loc()
         {
-            List<giay> giays = _giayService.GetAllgiay().Where(c => Int32.Parse(c.ghiChu) > 1).ToList();
+            List<giay> giays = _giayService.GetAllgiay().Where(c => c.soLuong > 0).ToList();
             return View(giays);
         }
         public IActionResult Redirect()
@@ -43,7 +43,6 @@ namespace ass_thieubvph20221.Controllers
 
         public IActionResult addGiay()
         {
-
             return View();
         }
         [HttpPost]

@@ -56,7 +56,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.donGiaban)
             </td>
-            <td>
+                <td height="100" width="200">
                 
                 @if (System.IO.Path.GetExtension(item.anh) == ".jpg" ||
                      System.IO.Path.GetExtension(item.anh) == ".png" ||
@@ -64,7 +64,7 @@
                      System.IO.Path.GetExtension(item.anh) == ".tiff" ||
                      System.IO.Path.GetExtension(item.anh) == ".gif")
                 {
-                    <img src="~/image/@item.anh" height="100">
+                    <img src="~/image/@item.anh" height="100" >
                 }
                 else
                 {

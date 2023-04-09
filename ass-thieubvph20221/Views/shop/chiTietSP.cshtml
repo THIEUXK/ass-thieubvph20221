@@ -45,13 +45,13 @@
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
-                                <input type="text" placeholder="0" ng-model="soLuong" />
+                                <input type="text" placeholder="" ng-model="soLuong" name="soluong" />
                             </div>
                         </div>
                     </div>
                     <a href=""
                        class="primary-btn"
-                       ng-click="">@Html.ActionLink("ADD", "chiTietSP", new { id = Model.id })</a>
+                       ng-click="">@Html.ActionLink("ADD", "chiTietSP", new { id = Model.id,  })</a>
                     <a href="#" class="heart-icon">
                         <span class="icon_heart_alt"></span>
                     </a>

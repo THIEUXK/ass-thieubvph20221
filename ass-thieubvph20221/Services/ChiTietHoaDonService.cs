@@ -84,7 +84,7 @@ namespace ass_thieubvph20221.Services
             }
         }
 
-        public bool Delete(chiTietHoaDon id)
+        public bool Delete(Guid id)
         {
             try
             {

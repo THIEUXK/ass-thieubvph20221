@@ -8,15 +8,22 @@ namespace ass_thieubvph20221.Controllers
     {
         private readonly ILogger<shopController> _logger;
         private readonly giayService _giayService;
+        private readonly HoaDonService _hoaDonService;
 
 
         public shopController(ILogger<shopController> logger)
         {
             _giayService = new giayService();
+            _hoaDonService = new HoaDonService();
             _logger = logger;
         }
         public IActionResult shop()
         {
+
+            if (_hoaDonService.GetAllhoaDons().Count == 0)
+            {
+                //_hoaDonService.Create(new hoaDon() { id = new Guid(), idKhachHang = null, idNhanVien = null, ngayBan = DateTime.Today });
+            }
             List<giay> giays = _giayService.GetAllgiay();
             return View(giays);
         }
@@ -28,6 +35,8 @@ namespace ass_thieubvph20221.Controllers
         }
         public IActionResult chiTietSP(Guid id)
         {
+            //new HoaDon()
+            //    { MaHoaDon = maHoaDon, IdKhachHang = null, IdNhanVien = idNhanVien, PhuongThucMua = phuongThucMua };
 
             giay giay = _giayService.GetgiayById(id);
             return View(giay);
@@ -35,22 +44,15 @@ namespace ass_thieubvph20221.Controllers
        
         public IActionResult Redirect()
         {
-            // List fake
-            //var products = new List<Product>() {
-            //    new Product{ID = Guid.NewGuid(), Name = "Thịt gà", Price = 1000, AvailableQuantity = 15,
-            //    Status = 1,Supplier = "KhanhPG", Description = "Ngon" },
-            //    new Product{ID = Guid.NewGuid(), Name = "Thịt bò", Price = 2000, AvailableQuantity = 14,
-            //    Status = 1,Supplier = "DungNA29", Description = "Rất Ngon" },
-            //    new Product{ID = Guid.NewGuid(), Name = "Thịt lợn", Price = 900, AvailableQuantity = 12,
-            //    Status = 1,Supplier = "TienNH21", Description = "Hơi Ngon" }
-            //};
             List<giay> products = _giayService.GetAllgiay();
             return View("giay", products); // Trả về 1 View Cụ thể đi kèm với Model
         }
-        public IActionResult GioHang(Guid id)
+     
+       
+        public IActionResult GioHang(Guid id, int soluong)
         {
-
             return View();
         }
+        
     }
 }

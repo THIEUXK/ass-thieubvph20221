@@ -59,7 +59,7 @@ namespace ass_thieubvph20221.Services
             }
         }
 
-        public bool Delete(khachHang id)
+        public bool Delete(Guid id)
         {
             try
             {

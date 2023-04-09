@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ass_thieubvph20221.Models.nhanVien>
+
+@{
+    ViewData["Title"] = "QLNhanVien";
+}
+
+<h1>QLNhanVien</h1>
+
+<p>
+
+    <button type="button" class="btn btn-info"><a asp-action="AddQLNhanVien">Them nhan vien</a></button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tenNV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gioiTinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.diaChi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sDT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ngaySinh)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gioiTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.diaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngaySinh)
+            </td>
+            <td>
+                <button type="button" class="primary-btn" >@Html.ActionLink("Edit", "UpdateNV", new { id = item.id }) </button>
+                
+                <button type="button" class="primary-btn" >@Html.ActionLink("Details", "DetailsNV", new { id = item.id })</button>
+       
+                <button type="button" class="primary-btn">@Html.ActionLink("Delete", "DeleteNV", new { id = item.id })</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

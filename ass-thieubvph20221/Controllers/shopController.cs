@@ -20,11 +20,11 @@ namespace ass_thieubvph20221.Controllers
             List<giay> giays = _giayService.GetAllgiay();
             return View(giays);
         }
-        public IActionResult chiTietSP(Guid id)
+        public IActionResult chiTietSP()
         {
 
-            giay giay = _giayService.GetgiayById(id);
-            return View(giay);
+           
+            return View();
         }
         public IActionResult chiTietSP(Guid id)
         {
@@ -32,6 +32,7 @@ namespace ass_thieubvph20221.Controllers
             giay giay = _giayService.GetgiayById(id);
             return View(giay);
         }
+       
         public IActionResult Redirect()
         {
             // List fake

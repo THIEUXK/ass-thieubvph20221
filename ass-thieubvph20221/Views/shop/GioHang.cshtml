@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<ass_thieubvph20221.ViewModel.ChiTietGioHangView>
 @{
     ViewData["Title"] = "GioHang";
 }
@@ -10,44 +10,48 @@
                 <div class="shoping__cart__table">
                     <table>
                         <thead>
-                            <tr>
-                                <th class="shoping__product">Products</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                                <th>Xóa</th>
-                            </tr>
+                        <tr>
+                            <th class="shoping__product">Ảnh</th>
+                            <th class="shoping__product">Tên</th>
+                            <th>Giá</th>
+                            <th>số lượng</th>
+                            <th>Tổng</th>
+                            <th>Xóa</th>
+                        </tr>
                         </thead>
+                    
+                    @foreach (var item in Model){
                         <tbody ng-repeat="ds in lstGioHang" ng-init="total = 0">
-                            <tr>
-                                <td class="shoping__cart__item">
-                                    <img src="{{ds.img}}" alt="" style="height: 100px" />
-                                    <h5>{{ds.ten}}</h5>
-                                </td>
-                                <td class="shoping__cart__price">
-                                    <span ng-model="ds.gia">${{ds.gia}}</span>
-                                </td>
-                                <td class="shoping__cart__quantity">
-                                    <div class="quantity">
-                                        <div class="pro-qty">
-                                            <a href="" ng-click="quantity_tru(ds, $index)">-</a>
-                                            <input disabled
-                                                   type="text"
-                                                   ng-model="ds.soLuong"
-                                                   ng-change="updateTotal()"
-                                                   value="{{ds.soLuong}}" />
-                                            <a href="" ng-click="quantity_cong(ds, $index)">+</a>
-                                        </div>
+                        <tr>
+                            <td class="shoping__cart__item">
+                                <img src="~/image/@item.Giay.anh" alt="" style="height: 100px"/>
+                               
+                            </td>
+                            <td
+                                class="shoping__cart__item"> <h5>@item.Giay.tenGiay </h5>
+                            </td>
+                            <td class="shoping__cart__price">
+                                    <span ng-model="ds.gia"> @item.Giay.donGiaban.ToString()$</span>
+                            </td>
+                            <td class="shoping__cart__quantity">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input disabled
+                                               type="text"
+                                               value="@item.CTietGioHang.soLuong"/>
                                     </div>
-                                </td>
-                                <td class="shoping__cart__total">${{ds.gia * ds.soLuong}}</td>
-                                <td class="shoping__cart__item__close">
-                                    <span class="icon_close"
-                                          ng-click="deleteProductCart(ds.id)"></span>
-                                </td>
-                                <td><button ng-click="deleteGioHang(ds.id)">Xóa</button></td>
-                            </tr>
+                                </div>
+                            </td>
+                                <td class="shoping__cart__total">@(item.Giay.donGiaban*item.CTietGioHang.soLuong)$   </td>
+                            <td class="shoping__cart__item__close">
+                                <span class="icon_close"
+                                      ng-click="deleteProductCart(ds.id)"></span>
+                            </td>
+                                <td><button class="primary-btn">@Html.ActionLink("Xoá", "XoaGH", new { id = item.CTietGioHang.id })</button></td>
+                        </tr>
+
                         </tbody>
+                    }
                     </table>
                 </div>
             </div>
@@ -76,10 +80,13 @@
                 <div class="shoping__checkout">
                     <h5>Cart Total</h5>
                     <ul>
+                    @foreach (var item in Model)
+                    {
                         <li>Subtotal <span ng-bind="total"></span><span>$</span></li>
-                        <li>Total <span ng-bind="total"></span><span>$</span></li>
+                        <li>Total <span ng-bind="total"></span><span>@item.tongtien$</span></li>
+                    }
                     </ul>
-                    <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    <a href="#" class="primary-btn">@Html.ActionLink("Thanh Toán", "ThanhToan", new {  })</a>
                 </div>
             </div>
         </div>

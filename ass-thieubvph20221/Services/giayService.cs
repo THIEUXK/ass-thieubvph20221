@@ -69,7 +69,7 @@ namespace ass_thieubvph20221.Services
                 giay.ghiChu=p.ghiChu;
                 giay.anh =p.anh;
                 giay.soLuong=p.soLuong;
-                
+
                 context.SaveChanges(); return true;
             }
             catch (Exception)

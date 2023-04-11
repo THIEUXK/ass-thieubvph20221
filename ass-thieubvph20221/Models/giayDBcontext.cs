@@ -15,6 +15,8 @@ namespace ass_thieubvph20221.Models
         public DbSet<giay>Giays{ get; set; }
         public DbSet<hoaDon>HoaDons { get; set; }
         public DbSet<chiTietHoaDon> ChiTietHoaDons { get; set; }
+        public DbSet<GioHang> GioHangs { get; set; }
+        public DbSet<ChiTietGioHang> ChiTietGioHangs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

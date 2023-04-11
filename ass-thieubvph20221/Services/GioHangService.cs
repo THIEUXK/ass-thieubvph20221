@@ -4,62 +4,60 @@ using ass_thieubvph20221.ViewModel;
 
 namespace ass_thieubvph20221.Services
 {
-    public class HoaDonService:IHoaDonService
+    public class GioHangService:IGioHangservice
     {
-        public List<hoaDon> igHoaDon;
+        public List<GioHang> iggioHangs;
         //bien
         public List<nhanVien> igNhanVien;
         //bien
         public List<khachHang> igKhachhang;
         giayDBcontext context;
 
-        public HoaDonService()
+        public GioHangService()
         {
-            igHoaDon = new List<hoaDon>();
-            igNhanVien = new List<nhanVien>();
+            iggioHangs=new List<GioHang>();
+            igNhanVien=new List<nhanVien>();
             igKhachhang = new List<khachHang>();
             context = new giayDBcontext();
         }
 
-        public List<HoaDonView> GetAllhoaDonViews()
+
+        public List<GioHangView> GetAllGioHangvViewss()
         {
-            List<HoaDonView> lst = (from a in igHoaDon
+            List<GioHangView> lst = (from a in iggioHangs
                 join b in igNhanVien on a.idNhanVien equals b.id
                 join c in igKhachhang on a.idKhachHang equals c.id into gj
                 from x in gj.DefaultIfEmpty()
-                select new HoaDonView()
+                select new GioHangView()
                 {
-                    HoaDon = a,
+                    GioHang = a,
                     NhanVien = b,
                     KhachHang = x ?? null
                 }).ToList();
             return lst;
         }
 
-        public List<hoaDon> GetAllhoaDons()
+        public List<GioHang> GetAllGioHangs()
         {
-            return context.HoaDons.ToList();
+            return context.GioHangs.ToList();
         }
 
-
-        public hoaDon GethoaDonnById(Guid id)
+        public GioHang GetGioHangById(Guid id)
         {
-            return context.HoaDons.FirstOrDefault(p => p.id == id);
+            return context.GioHangs.FirstOrDefault(p => p.id == id);
         }
 
-        public List<hoaDon> GethoaDonByName(string name)
+        public List<GioHang> GetGioHangByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public bool Create(hoaDon p)
+        public bool Create(GioHang p)
         {
             try
             {
-                p.id= Guid.NewGuid();
-                p.ngayBan=DateTime.Now;
-                context.HoaDons.Add(p);
-                context.HoaDons.Add(p);
+                p.id = Guid.NewGuid();
+                context.GioHangs.Add(p);
                 context.SaveChanges();
                 return true;
             }
@@ -69,15 +67,14 @@ namespace ass_thieubvph20221.Services
             }
         }
 
-        public bool Update(hoaDon p)
+        public bool Update(GioHang p)
         {
             try
             {
-                var a = context.HoaDons.Find(p.id);
-                a.KhachHang=p.KhachHang;
-                a.NhanVien=p.NhanVien;
-                a.tongTien=p.tongTien;
-                a.ngayBan=p.ngayBan;
+                var a = context.GioHangs.Find(p.id);
+                a.KhachHang = p.KhachHang;
+                a.NhanVien = p.NhanVien;
+                a.mota=p.mota;
                 context.SaveChanges(); return true;
             }
             catch (Exception)
@@ -90,8 +87,8 @@ namespace ass_thieubvph20221.Services
         {
             try
             {
-                var nv = context.HoaDons.Find(id);
-                context.HoaDons.Remove(nv);
+                var nv = context.GioHangs.Find(id);
+                context.GioHangs.Remove(nv);
                 context.SaveChanges();
                 return true;
             }

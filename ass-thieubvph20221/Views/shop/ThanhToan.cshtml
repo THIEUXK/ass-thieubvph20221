@@ -1,0 +1,42 @@
+﻿@model ass_thieubvph20221.ViewModel.ChiTietGioHangView
+@{
+    ViewData["Title"] = "ThanhToan";
+}
+
+ <section class="checkout spad">
+        <div class="container">
+            @if (TempData["ErrorMessage"] != null)
+        {
+                    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
+            <div class="checkout__form">
+                <h4>Your Information</h4>
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="checkout__order">
+                            <h4>Your Order</h4>
+                            <form method="post" asp-controller="shop" asp-action="SauThanhToan">
+                            <div class="checkout__order__products">Sản Phẩm<span>Giá</span></div>
+                            <ul>
+                                @foreach (var item in @Model.ChiTietGioHangs)
+                                {
+                                    <li>@item.Giay.tenGiay
+                                        <span>@((item.Giay.donGiaban * item.soLuong).ToString())$</span>
+                                    </li>
+                                    <input type="hidden" name="ChiTietGioHangs[@(Model.ChiTietGioHangs.IndexOf(item))].id" value="@item.id"/>
+                                    <input type="hidden" name="ChiTietGioHangs[@(Model.ChiTietGioHangs.IndexOf(item))].idGiay" value="@item.idGiay"/>
+                                    <input type="hidden" name="ChiTietGioHangsp[@(Model.ChiTietGioHangs.IndexOf(item))].soLuong" value="@item.soLuong"/>
+                                }
+                            </ul>
+                            <br></br>
+                            <div class="checkout__order__total">tổng tiền <span>@Model.tongtien.ToString()$</span></div>
+
+                            <button type="submit" class="site-btn">Mua</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

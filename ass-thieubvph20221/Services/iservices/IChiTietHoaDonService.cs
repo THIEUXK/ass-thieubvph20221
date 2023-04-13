@@ -6,9 +6,9 @@ namespace ass_thieubvph20221.Services.iservices
     public interface IChiTietchiTietHoaDonService
     {
         // Các phương thức lấy ra sản phẩm
-        public List<HoaDonChiTietView> GetAllchiTietHoaDonvViewss();
+
         public List<chiTietHoaDon> GetAllchiTietHoaDons();
-        public chiTietHoaDon GetchiTietHoaDonnById(Guid id);
+        public List<chiTietHoaDon> GetchiTietHoaDonnById(Guid id);
         public List<chiTietHoaDon> GetchiTietHoaDonByName(string name);
         // Phương thức Thêm
         public bool Create(chiTietHoaDon p);

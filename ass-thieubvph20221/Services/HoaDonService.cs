@@ -1,6 +1,7 @@
 ﻿using ass_thieubvph20221.Models;
 using ass_thieubvph20221.Services.iservices;
 using ass_thieubvph20221.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace ass_thieubvph20221.Services
 {
@@ -8,7 +9,7 @@ namespace ass_thieubvph20221.Services
     {
         public List<hoaDon> igHoaDon;
         //bien
-        public List<nhanVien> igNhanVien;
+    
         //bien
         public List<khachHang> igKhachhang;
         giayDBcontext context;
@@ -16,29 +17,15 @@ namespace ass_thieubvph20221.Services
         public HoaDonService()
         {
             igHoaDon = new List<hoaDon>();
-            igNhanVien = new List<nhanVien>();
+
             igKhachhang = new List<khachHang>();
             context = new giayDBcontext();
         }
 
-        public List<HoaDonView> GetAllhoaDonViews()
-        {
-            List<HoaDonView> lst = (from a in igHoaDon
-                join b in igNhanVien on a.idNhanVien equals b.id
-                join c in igKhachhang on a.idKhachHang equals c.id into gj
-                from x in gj.DefaultIfEmpty()
-                select new HoaDonView()
-                {
-                    HoaDon = a,
-                    NhanVien = b,
-                    KhachHang = x ?? null
-                }).ToList();
-            return lst;
-        }
 
         public List<hoaDon> GetAllhoaDons()
         {
-            return context.HoaDons.ToList();
+            return context.HoaDons.Include(c=>c.KhachHang).ToList();
         }
 
 
@@ -56,9 +43,7 @@ namespace ass_thieubvph20221.Services
         {
             try
             {
-                p.id= Guid.NewGuid();
-                p.ngayBan=DateTime.Now;
-                context.HoaDons.Add(p);
+                
                 context.HoaDons.Add(p);
                 context.SaveChanges();
                 return true;
@@ -75,7 +60,6 @@ namespace ass_thieubvph20221.Services
             {
                 var a = context.HoaDons.Find(p.id);
                 a.KhachHang=p.KhachHang;
-                a.NhanVien=p.NhanVien;
                 a.tongTien=p.tongTien;
                 a.ngayBan=p.ngayBan;
                 context.SaveChanges(); return true;

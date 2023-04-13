@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ass_thieubvph20221.Models.khachHang>
+﻿@using Microsoft.AspNetCore.Razor.Language
+@model IEnumerable<ass_thieubvph20221.Models.khachHang>
 
 @{
     ViewData["Title"] = "QLKhanhHangs";
@@ -12,9 +13,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.id)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.tenKH)
             </th>
@@ -24,15 +23,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.sDT)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChucVu)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.id)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.tenKH)
             </td>
@@ -42,6 +41,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.sDT)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChucVu)
+                </td>
                 <td>
                     <button type="button" class="primary-btn" >@Html.ActionLink("Edit", "UpdateKH", new { id = item.id }) </button>
 

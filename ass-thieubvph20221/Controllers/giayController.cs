@@ -109,8 +109,6 @@ namespace ass_thieubvph20221.Controllers
 
 
                 }
-
-
             }
             
             if (imageFile != null && imageFile.Length > 0) // Không null và không trống
@@ -170,7 +168,7 @@ namespace ass_thieubvph20221.Controllers
             {
                 return RedirectToAction("Redirect");
             }
-            else return View("giay");
+            return RedirectToAction("Redirect");
         }
 
 

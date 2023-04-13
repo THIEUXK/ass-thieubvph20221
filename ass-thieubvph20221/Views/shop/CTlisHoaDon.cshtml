@@ -1,0 +1,49 @@
+﻿@model ass_thieubvph20221.ViewModel.HoaDonChiTietView
+
+
+@{
+    ViewData["Title"] = "CTlisHoaDon";
+}
+
+<h1>CTlisHoaDon</h1>
+
+<p>
+ 
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                tên giày
+            </th>
+            <th>
+                số lượng
+            </th>
+            <th>
+                đơn giá
+            </th>
+            <th>
+                thành tiền
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ChiTietHoaDons) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Giay.tenGiay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.donGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thanhTien)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ass_thieubvph20221.ViewModel.ChiTietGioHangView>
+﻿@model ass_thieubvph20221.ViewModel.ChiTietGioHangView
 @{
     ViewData["Title"] = "GioHang";
 }
@@ -20,7 +20,7 @@
                         </tr>
                         </thead>
                     
-                    @foreach (var item in Model){
+                    @foreach (var item in Model.ChiTietGioHangs){
                         <tbody ng-repeat="ds in lstGioHang" ng-init="total = 0">
                         <tr>
                             <td class="shoping__cart__item">
@@ -38,16 +38,16 @@
                                     <div class="pro-qty">
                                         <input disabled
                                                type="text"
-                                               value="@item.CTietGioHang.soLuong"/>
+                                               value="@item.soLuong"/>
                                     </div>
                                 </div>
                             </td>
-                                <td class="shoping__cart__total">@(item.Giay.donGiaban*item.CTietGioHang.soLuong)$   </td>
+                                <td class="shoping__cart__total">@(item.Giay.donGiaban*item.soLuong)$   </td>
                             <td class="shoping__cart__item__close">
                                 <span class="icon_close"
                                       ng-click="deleteProductCart(ds.id)"></span>
                             </td>
-                                <td><button class="primary-btn">@Html.ActionLink("Xoá", "XoaGH", new { id = item.CTietGioHang.id })</button></td>
+                                <td><button class="primary-btn">@Html.ActionLink("Xoá", "XoaGH", new { id = item.id })</button></td>
                         </tr>
 
                         </tbody>
@@ -80,13 +80,10 @@
                 <div class="shoping__checkout">
                     <h5>Cart Total</h5>
                     <ul>
-                    @foreach (var item in Model)
-                    {
                         <li>Subtotal <span ng-bind="total"></span><span>$</span></li>
-                        <li>Total <span ng-bind="total"></span><span>@item.tongtien$</span></li>
-                    }
+                        <li>Total <span ng-bind="total"></span><span>@Model.tongtien.ToString()$</span></li>
                     </ul>
-                    <a href="#" class="primary-btn">@Html.ActionLink("Thanh Toán", "ThanhToan", new {  })</a>
+                    <button type="submit" class="primary-btn">@Html.ActionLink("Thanh Toán", "ThanhToan", new { })</button>
                 </div>
             </div>
         </div>

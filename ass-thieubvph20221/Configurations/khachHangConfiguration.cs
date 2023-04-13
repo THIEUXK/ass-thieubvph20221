@@ -12,6 +12,7 @@ namespace ass_thieubvph20221.Configurations
             builder.Property(c => c.tenKH);
             builder.Property(c => c.diaChi);
             builder.Property(c => c.sDT);
+            builder.Property(c => c.ChucVu);
         }
     }
 }

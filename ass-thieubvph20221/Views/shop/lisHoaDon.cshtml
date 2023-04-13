@@ -1,0 +1,49 @@
+﻿@model ass_thieubvph20221.ViewModel.HoaDonView
+
+@{
+    ViewData["Title"] = "lisHoaDon";
+}
+
+<h1>lisHoaDon</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Ten kh
+            </th>
+            <th>
+                chuc vu
+            </th>
+            <th>
+               ngay ban
+            </th>
+            <th>
+               tong tien
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.HoaDons){
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhachHang.tenKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhachHang.ChucVu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngayBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tongTien)
+            </td>
+            <td>
+                        <button type="button" class="primary-btn" >@Html.ActionLink("Details", "CTlisHoaDon", new { id=item.id}))</button>
+                <button type="button" class="primary-btn" >@Html.ActionLink("xóa", "xoalisHoaDon", new { id=item.id}))</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

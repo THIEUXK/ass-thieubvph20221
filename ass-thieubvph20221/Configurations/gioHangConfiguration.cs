@@ -12,7 +12,7 @@ namespace ass_thieubvph20221.Configurations
             builder.Property(c => c.mota);
             
             builder.HasOne(c => c.KhachHang).WithMany(c => c.GioHangs).HasForeignKey(c => c.idKhachHang);
-            builder.HasOne(c => c.NhanVien).WithMany(c => c.GioHangs).HasForeignKey(c => c.idNhanVien);
+           
         }
     }
 }

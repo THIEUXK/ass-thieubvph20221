@@ -123,17 +123,12 @@ namespace ass_thieubvph20221.Migrations
                     b.Property<Guid>("idKhachHang")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("idNhanVien")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("mota")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
                     b.HasIndex("idKhachHang");
-
-                    b.HasIndex("idNhanVien");
 
                     b.ToTable("GioHangs");
                 });
@@ -147,9 +142,6 @@ namespace ass_thieubvph20221.Migrations
                     b.Property<Guid>("idKhachHang")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("idNhanVien")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime?>("ngayBan")
                         .HasColumnType("datetime2");
 
@@ -160,8 +152,6 @@ namespace ass_thieubvph20221.Migrations
 
                     b.HasIndex("idKhachHang");
 
-                    b.HasIndex("idNhanVien");
-
                     b.ToTable("HoaDons");
                 });
 
@@ -170,6 +160,9 @@ namespace ass_thieubvph20221.Migrations
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ChucVu")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("diaChi")
                         .HasColumnType("nvarchar(max)");
@@ -183,32 +176,6 @@ namespace ass_thieubvph20221.Migrations
                     b.HasKey("id");
 
                     b.ToTable("KhachHangs");
-                });
-
-            modelBuilder.Entity("ass_thieubvph20221.Models.nhanVien", b =>
-                {
-                    b.Property<Guid>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("diaChi")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("gioiTinh")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ngaySinh")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("sDT")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("tenNV")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("NhanViens");
                 });
 
             modelBuilder.Entity("ass_thieubvph20221.Models.ChiTietGioHang", b =>
@@ -249,15 +216,7 @@ namespace ass_thieubvph20221.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ass_thieubvph20221.Models.nhanVien", "NhanVien")
-                        .WithMany("GioHangs")
-                        .HasForeignKey("idNhanVien")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("KhachHang");
-
-                    b.Navigation("NhanVien");
                 });
 
             modelBuilder.Entity("ass_thieubvph20221.Models.hoaDon", b =>
@@ -268,15 +227,7 @@ namespace ass_thieubvph20221.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ass_thieubvph20221.Models.nhanVien", "NhanVien")
-                        .WithMany("HoaDon")
-                        .HasForeignKey("idNhanVien")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("KhachHang");
-
-                    b.Navigation("NhanVien");
                 });
 
             modelBuilder.Entity("ass_thieubvph20221.Models.giay", b =>
@@ -297,13 +248,6 @@ namespace ass_thieubvph20221.Migrations
                 });
 
             modelBuilder.Entity("ass_thieubvph20221.Models.khachHang", b =>
-                {
-                    b.Navigation("GioHangs");
-
-                    b.Navigation("HoaDon");
-                });
-
-            modelBuilder.Entity("ass_thieubvph20221.Models.nhanVien", b =>
                 {
                     b.Navigation("GioHangs");
 

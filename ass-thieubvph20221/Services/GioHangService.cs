@@ -1,6 +1,7 @@
 ﻿using ass_thieubvph20221.Models;
 using ass_thieubvph20221.Services.iservices;
 using ass_thieubvph20221.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace ass_thieubvph20221.Services
 {
@@ -8,7 +9,7 @@ namespace ass_thieubvph20221.Services
     {
         public List<GioHang> iggioHangs;
         //bien
-        public List<nhanVien> igNhanVien;
+        
         //bien
         public List<khachHang> igKhachhang;
         giayDBcontext context;
@@ -16,30 +17,17 @@ namespace ass_thieubvph20221.Services
         public GioHangService()
         {
             iggioHangs=new List<GioHang>();
-            igNhanVien=new List<nhanVien>();
+          
             igKhachhang = new List<khachHang>();
             context = new giayDBcontext();
         }
 
 
-        public List<GioHangView> GetAllGioHangvViewss()
-        {
-            List<GioHangView> lst = (from a in iggioHangs
-                join b in igNhanVien on a.idNhanVien equals b.id
-                join c in igKhachhang on a.idKhachHang equals c.id into gj
-                from x in gj.DefaultIfEmpty()
-                select new GioHangView()
-                {
-                    GioHang = a,
-                    NhanVien = b,
-                    KhachHang = x ?? null
-                }).ToList();
-            return lst;
-        }
+   
 
         public List<GioHang> GetAllGioHangs()
         {
-            return context.GioHangs.ToList();
+            return context.GioHangs.Include(c=>c.KhachHang).ToList();
         }
 
         public GioHang GetGioHangById(Guid id)
@@ -73,7 +61,6 @@ namespace ass_thieubvph20221.Services
             {
                 var a = context.GioHangs.Find(p.id);
                 a.KhachHang = p.KhachHang;
-                a.NhanVien = p.NhanVien;
                 a.mota=p.mota;
                 context.SaveChanges(); return true;
             }

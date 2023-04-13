@@ -1,6 +1,7 @@
 ﻿using ass_thieubvph20221.Models;
 using ass_thieubvph20221.Services.iservices;
 using ass_thieubvph20221.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace ass_thieubvph20221.Services
 {
@@ -20,29 +21,16 @@ namespace ass_thieubvph20221.Services
             IgcChiTietHoaDons = new List<chiTietHoaDon>();
             context = new giayDBcontext();
         }
-        public List<HoaDonChiTietView> GetAllchiTietHoaDonvViewss()
-        {
-            List<HoaDonChiTietView> lst = (from a in IgcChiTietHoaDons
-                join b in IggiGiays on a.idGiay equals b.id
-                join c in igHoaDon on a.idHoaDon equals c.id into gj
-                from x in gj.DefaultIfEmpty()
-                select new HoaDonChiTietView()
-                {
-                    ChiTietHoaDon = a,
-                    Giay = b,
-                    HoaDon = x ?? null
-                }).ToList();
-            return lst;
-        }
+        
 
         public List<chiTietHoaDon> GetAllchiTietHoaDons()
         {
-            return context.ChiTietHoaDons.ToList();
+            return context.ChiTietHoaDons.Include(c=>c.HoaDon).Include(c=>c.Giay).ToList();
         }
 
-        public chiTietHoaDon GetchiTietHoaDonnById(Guid id)
+        public List<chiTietHoaDon> GetchiTietHoaDonnById(Guid id)
         {
-            return context.ChiTietHoaDons.FirstOrDefault(p => p.id == id);
+            return context.ChiTietHoaDons.Include(c => c.HoaDon).Include(c => c.Giay).Where(c=>c.idHoaDon==id).ToList();
         }
 
         public List<chiTietHoaDon> GetchiTietHoaDonByName(string name)
@@ -55,7 +43,6 @@ namespace ass_thieubvph20221.Services
             try
             {
                 context.ChiTietHoaDons.Add(p);
-
                 context.SaveChanges();
                 return true;
             }

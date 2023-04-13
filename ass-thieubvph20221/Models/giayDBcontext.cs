@@ -11,7 +11,6 @@ namespace ass_thieubvph20221.Models
         {
         }
         public DbSet<khachHang> KhachHangs { get; set; }
-        public DbSet<nhanVien> NhanViens { get; set; }
         public DbSet<giay>Giays{ get; set; }
         public DbSet<hoaDon>HoaDons { get; set; }
         public DbSet<chiTietHoaDon> ChiTietHoaDons { get; set; }

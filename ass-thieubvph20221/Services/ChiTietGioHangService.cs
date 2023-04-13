@@ -1,6 +1,7 @@
 ﻿using ass_thieubvph20221.Models;
 using ass_thieubvph20221.Services.iservices;
 using ass_thieubvph20221.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace ass_thieubvph20221.Services
 {
@@ -24,23 +25,12 @@ namespace ass_thieubvph20221.Services
 
         public List<ChiTietGioHangView> GetAllTietGioHangViews()
         {
-            List<ChiTietGioHangView> lst = (from a in GetAllChiTietGioHangs()
-                join b in context.Giays.ToList() on a.idGiay equals b.id
-                join c in  context.GioHangs.ToList() on a.idGioHang equals c.id
-                select new ChiTietGioHangView()
-                {
-                    CTietGioHang = a,
-                    Giay = b,
-                    GioHang = c ,
-                    tongtien = 0,
-                    
-                }).ToList();
-            return lst;
+            throw new NotImplementedException();
         }
 
         public List<ChiTietGioHang> GetAllChiTietGioHangs()
         {
-            return context.ChiTietGioHangs.ToList();
+            return context.ChiTietGioHangs.Include(c => c.Giay).Include(c => c.GioHang).ToList();//lay tat ca
         }
 
         public ChiTietGioHang GetChiTietGioHangnById(Guid id)

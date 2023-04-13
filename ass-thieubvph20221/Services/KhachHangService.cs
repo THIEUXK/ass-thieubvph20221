@@ -50,6 +50,7 @@ namespace ass_thieubvph20221.Services
                a.tenKH=p.tenKH;
                a.diaChi=p.diaChi;
                a.sDT=p.sDT;
+               a.ChucVu=p.ChucVu;
                
                 context.SaveChanges(); return true;
             }

@@ -5,7 +5,7 @@ namespace ass_thieubvph20221.Services.iservices
 {
     public interface IGioHangservice
     {
-        public List<GioHangView> GetAllGioHangvViewss();
+
         public List<GioHang> GetAllGioHangs();
         public GioHang GetGioHangById(Guid id);
         public List<GioHang> GetGioHangByName(string name);

@@ -4,8 +4,9 @@ namespace ass_thieubvph20221.ViewModel
 {
     public class GioHangView
     {
-        public GioHang GioHang { get; set; } = new();
-        public khachHang KhachHang { get; set; } = new();
-        public nhanVien NhanVien { get; set; } = new();
+        public List<GioHang> GioHangs { get; set; } = new();
+
+        public List<ChiTietGioHang> ChiTietGioHangs { get; set; } = new();
+        public int tongtien { get; set; } = new();
     }
 }
